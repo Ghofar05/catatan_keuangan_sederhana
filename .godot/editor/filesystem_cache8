@@ -1,0 +1,9 @@
+fc8a56933c4b1c8d796fdb8f7a9f9475
+::res://::1725975064
+export_presets.cfg::TextFile::-1::1725181409::0::1::::<><>::
+icon.svg::CompressedTexture2D::5293358094972396875::1725098982::1725161126::1::::<><>::
+main.gd::GDScript::-1::1725205183::0::1::::<>Node2D<>::
+main.tscn::PackedScene::1867900684228426665::1725205183::0::1::::<><>::res://main.gd
+test.tscn::PackedScene::3205828255043436879::1725139076::0::1::::<><>::uid://1u3b0m4u7ejh::::res://main.tscn
+::res://exported/::1725161064
+::res://exported/133200997/::1725161064
