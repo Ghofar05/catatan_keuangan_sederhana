@@ -114,8 +114,11 @@ func cekinput():
 
 func checkitemlist():
 	
+	item_array.clear()
+	
 	for i in range(item_list.get_item_count()):
 		item_array.append(item_list.get_item_text(i))
+	
 	
 	print(item_array)
 	pass
