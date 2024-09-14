@@ -10,10 +10,16 @@ config_version=5
 
 [application]
 
-config/name="keuangan"
+config/name="catat uang"
+config/version="0.1.1"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.988235, 0.972549, 0.890196, 1)
+boot_splash/image="res://CATAT-UANG-SPLASH-SCREEN.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://iconmain.svg"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
@@ -23,6 +29,7 @@ Global="*res://Global.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1

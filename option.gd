@@ -60,6 +60,7 @@ func _on_button_pressed() -> void:
 	# mengambil data dari array untuk di masukkan ke itemlist
 	for item in $"../..".item_array :
 		$"../../riwayatfull/ItemList".add_item(item)
+	print("array telah dimuat")
 	
 	$"../../riwayatfull".show()
 	$"../../option".hide()
@@ -73,6 +74,8 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
+	$"../savenloader".loadcatatan()
+	print("catatan telah dimuat")
 	$"../../catatan".show()
 	$"../../option".hide()
 	pass # Replace with function body.
@@ -80,6 +83,8 @@ func _on_button_3_pressed() -> void:
 
 func _on_catbutton_pressed() -> void:
 	$"../../option".show()
+	$"../savenloader".savecatatan()
+	print("catatan telah disimpan")
 	$"../../catatan".hide()
 	pass # Replace with function body.
 
@@ -97,12 +102,9 @@ func _on_settbutton_pressed() -> void:
 
 
 func _on_savesetting_pressed() -> void:
-	if Global.styleSelected == "classic":
-		$"../../setting/OptionButton".setstyles(Color.WHEAT,Color.CADET_BLUE,Color.WHITE_SMOKE,Color.BLACK,Color.FIREBRICK,Color.WHITE_SMOKE)
-	elif Global.styleSelected == "light":
-		$"../../setting/OptionButton".setstyles(Color.FLORAL_WHITE,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE,Color.DARK_SALMON,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE)
-	elif Global.styleSelected == "dark":
-		$"../../setting/OptionButton".setstyles(Color.BLACK,Color.BLACK,Color.TEAL,Color.TEAL,Color.DARK_RED,Color.TEAL)
+	$"../../setting/OptionButton".usestyle()
+	$"../savenloader".savestyle()
+	print("style telah disimpan")
 	
 	
 	

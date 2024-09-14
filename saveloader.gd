@@ -41,10 +41,10 @@ func checksavedata():
 	if file == true:
 		Global.saveDataAvailable = true
 		loads()
-		print("data loaded")
+		print("data riwayat dimuat")
 	else:
 		Global.saveDataAvailable = false
-		print("no data")
+		print("tidak ada file data riwayat")
 	pass
 
 func checksavedataforDelete():
@@ -57,6 +57,62 @@ func checksavedataforDelete():
 
 
 
+func savecatatan():
+	var file = FileAccess.open("user://datacatatan.json",FileAccess.WRITE)
+	var saved_data = {}
+	
+	saved_data["catatan"] = $"../../catatan/TextEdit".text
+	
+	var json = JSON.stringify(saved_data)
+	file.store_string(json)
+	file.close()
+
+
+func loadcatatan():
+	var data = FileAccess.file_exists("user://datacatatan.json")
+	if data:
+		var file = FileAccess.open("user://datacatatan.json",FileAccess.READ)
+		var json = file.get_as_text()
+		
+		var save_data = JSON.parse_string(json)
+		$"../../catatan/TextEdit".text = save_data["catatan"]
+		file.close()
+	else:
+		print("tidak ada data catatan")
+		pass
+	
+	
+
+
+
+
+
+func savestyle():
+	var file = FileAccess.open("user://datastyle.json",FileAccess.WRITE)
+	var saved_data = {}
+	
+	saved_data["catatan"] = Global.styleSelected
+	
+	var json = JSON.stringify(saved_data)
+	file.store_string(json)
+	file.close()
+
+
+func loadstyle():
+	var file = FileAccess.open("user://datastyle.json",FileAccess.READ)
+	var json = file.get_as_text()
+	
+	var save_data = JSON.parse_string(json)
+	
+	Global.styleSelected = save_data["catatan"]
+	
+	
+	file.close()
+
+
+
+
+
 func _on_hapusdata_pressed() -> void:
 	#menghapus data
 	if Global.saveDataAvailable:
@@ -64,9 +120,13 @@ func _on_hapusdata_pressed() -> void:
 		mains.keterangan.clear()
 		mains.inputUang = 0
 		mains.total_uang.text = "0"
+		$"../../catatan/TextEdit".text = ""
 		$"../../riwayatfull/ItemList".clear()
 		%ItemList.clear()
+		DirAccess.remove_absolute("user://datacatatan.json")
 		DirAccess.remove_absolute("user://savedata.json")
+		
+		print("data telah di hapus")
 		
 	else:
 		print("no data")

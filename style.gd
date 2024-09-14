@@ -4,7 +4,7 @@ extends Control
 
 func _process(delta: float) -> void:
 	
-	#print(colorbgmain)
+	#mengecek status option button yang dipilih
 	if option_button.selected == 0:
 		Global.styleSelected = "classic"
 	elif option_button.selected == 1:
@@ -13,8 +13,15 @@ func _process(delta: float) -> void:
 		Global.styleSelected = "dark"
 		
 		
+func usestyle():
+	if Global.styleSelected == "classic":
+		setstyles(Color.WHEAT,Color.CADET_BLUE,Color.WHITE_SMOKE,Color.BLACK,Color.FIREBRICK,Color.WHITE_SMOKE)
+	elif Global.styleSelected == "light":
+		setstyles(Color.FLORAL_WHITE,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE,Color.DARK_SALMON,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE)
+	elif Global.styleSelected == "dark":
+		setstyles(Color.BLACK,Color.BLACK,Color.TEAL,Color.TEAL,Color.DARK_RED,Color.TEAL)
 		
-		
+# mengatur style warna
 func setstyles(colorbgmain,colorbgmainsec,buttoncolortext,labelcolortext,labelwarningcolortext,optioncolor):
 	
 	$"../../ui/ColorRect".color = colorbgmainsec

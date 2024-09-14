@@ -7,8 +7,8 @@ extends Node2D
 # akses node
 @onready var inputfield = $ui3/LineEdit #input untuk memasukkan jumlah uang
 @onready var item_list: ItemList = %ItemList
-
 @onready var total_uang : Label = $"ui/total uang"
+@onready var catatan
 
 
 
@@ -35,12 +35,21 @@ extends Node2D
 
 
 func _ready() -> void:
-	$setting/OptionButton.setstyles(Color.WHEAT,Color.CADET_BLUE,Color.WHITE_SMOKE,Color.BLACK,Color.FIREBRICK,Color.WHITE_SMOKE)
-	
 	$ui/version.text = Global.appVersion
+	
+	
 	
 	$utilitas/savenloader.checksavedata() #mengecek dan meload data json
 	total_uang.text = add_comma_to_int(inputUang)
+	
+	
+	
+	$utilitas/savenloader.savestyle()
+	$utilitas/savenloader.loadstyle()
+	$setting/OptionButton.usestyle()
+	
+
+
 
 func _process(_delta) -> void:
 	date = Time.get_date_string_from_system()
