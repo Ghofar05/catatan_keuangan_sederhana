@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://1u3b0m4u7ejh"]
+[gd_scene load_steps=10 format=3 uid="uid://1u3b0m4u7ejh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_uhpib"]
+[ext_resource type="FontFile" uid="uid://c0hmphsp2eiw8" path="res://Roboto-Medium.ttf" id="2_mxmia"]
 [ext_resource type="Script" path="res://saveloader.gd" id="2_w6yn3"]
+[ext_resource type="Script" path="res://style.gd" id="3_0ts0n"]
+[ext_resource type="Script" path="res://option.gd" id="4_fnqx4"]
 
 [sub_resource type="Animation" id="Animation_3nje4"]
 length = 0.001
@@ -77,7 +80,7 @@ color = Color(0.507576, 0.806709, 0.682358, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 994.0
+offset_bottom = 1112.0
 grow_horizontal = 2
 color = Color(0.877171, 0.96922, 0.926079, 1)
 
@@ -86,9 +89,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 278.0
-offset_top = 902.0
+offset_top = 1050.0
 offset_right = -278.0
-offset_bottom = 994.0
+offset_bottom = 1142.0
 grow_horizontal = 2
 color = Color(0.505882, 0.807843, 0.682353, 1)
 
@@ -103,6 +106,7 @@ offset_right = 34.0
 offset_bottom = 95.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mxmia")
 theme_override_font_sizes/font_size = 50
 text = "Total uang :"
 
@@ -136,11 +140,28 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 autowrap_mode = 1
 
+[node name="version" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 10.0
+offset_right = 701.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
 [node name="ui2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
+
+[node name="Label" type="Label" parent="ui2"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 260.0
+offset_right = 126.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "RIWAYAT :"
 
 [node name="Button" type="Button" parent="ui2"]
 layout_mode = 1
@@ -150,9 +171,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -65.5
-offset_top = -365.0
+offset_top = -214.0
 offset_right = 65.5
-offset_bottom = -220.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 100
@@ -162,9 +183,10 @@ text = "+"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 46.0
-offset_top = 232.0
+offset_top = 290.0
 offset_right = 671.0
-offset_bottom = 855.0
+offset_bottom = 1036.0
+theme_override_colors/guide_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="ui3" type="Control" parent="."]
@@ -278,7 +300,6 @@ theme_override_colors/font_color = Color(0.954458, 3.60981e-06, 1.34766e-06, 1)
 text = "*harap pilih kategori"
 
 [node name="info2" type="Label" parent="ui3"]
-visible = false
 layout_mode = 0
 offset_left = 49.0
 offset_top = 313.0
@@ -291,6 +312,334 @@ text = "*masukkan angka"
 libraries = {
 "": SubResource("AnimationLibrary_0d40u")
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 71.0
+offset_bottom = 21.0
+color = Color(0.411765, 0.447059, 0.431373, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 33.0
+offset_right = 71.0
+offset_bottom = 43.0
+color = Color(0.411765, 0.447059, 0.431373, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 56.0
+offset_right = 71.0
+offset_bottom = 66.0
+color = Color(0.411765, 0.447059, 0.431373, 1)
+
+[node name="optButton" type="Button" parent="."]
+offset_right = 80.0
+offset_bottom = 80.0
+flat = true
+
+[node name="option" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="ColorRect" type="ColorRect" parent="option"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313478, 0.579757, 0.47172, 1)
+
+[node name="Button" type="Button" parent="option"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -500.0
+offset_right = 254.0
+offset_bottom = -355.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "RIWAYAT"
+
+[node name="Button2" type="Button" parent="option"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -52.0
+offset_right = 254.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "SETTING"
+
+[node name="Button3" type="Button" parent="option"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -280.0
+offset_right = 254.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "CATATAN"
+
+[node name="Button4" type="Button" parent="option"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -317.0
+offset_right = 175.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "TUTUP"
+
+[node name="riwayatfull" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="ColorRect" type="ColorRect" parent="riwayatfull"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313478, 0.579757, 0.47172, 1)
+
+[node name="riwbutton" type="Button" parent="riwayatfull"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -186.0
+offset_right = 175.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "TUTUP"
+
+[node name="ItemList" type="ItemList" parent="riwayatfull"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -609.0
+offset_right = 316.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="setting" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="ColorRect" type="ColorRect" parent="setting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313478, 0.579757, 0.47172, 1)
+
+[node name="settbutton" type="Button" parent="setting"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -186.0
+offset_right = 175.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "TUTUP"
+
+[node name="OptionButton" type="OptionButton" parent="setting"]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 214.0
+offset_right = 524.0
+offset_bottom = 260.0
+alignment = 1
+item_count = 3
+popup/item_0/text = "CLASSIC"
+popup/item_1/text = "LIGHT"
+popup/item_1/id = 1
+popup/item_2/text = "DARK"
+popup/item_2/id = 2
+script = ExtResource("3_0ts0n")
+
+[node name="OptionButton2" type="OptionButton" parent="setting"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 575.0
+offset_right = 580.0
+offset_bottom = 618.0
+alignment = 1
+item_count = 3
+popup/item_0/text = "1"
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="setting"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 200.0
+offset_right = 239.0
+offset_bottom = 269.0
+theme_override_font_sizes/font_size = 50
+text = "STYLE :"
+
+[node name="Label2" type="Label" parent="setting"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 660.0
+offset_right = 382.0
+offset_bottom = 729.0
+theme_override_font_sizes/font_size = 50
+text = "HAPUS DATA :"
+
+[node name="Label3" type="Label" parent="setting"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 571.0
+offset_right = 406.0
+offset_bottom = 613.0
+theme_override_font_sizes/font_size = 30
+text = "BERAPA JUMLAH 1+1 = "
+
+[node name="Label4" type="Label" parent="setting"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 733.0
+offset_right = 428.0
+offset_bottom = 792.0
+theme_override_colors/font_color = Color(1, 0.0909423, 0.0594644, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="savesetting" type="Button" parent="setting"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 321.0
+offset_right = 200.0
+offset_bottom = 360.0
+text = "SAVE STYLE"
+
+[node name="hapusdata" type="Button" parent="setting"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 679.0
+offset_right = 654.0
+offset_bottom = 723.0
+disabled = true
+text = "HAPUS DATA RIWAYAT"
+
+[node name="catatan" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="ColorRect" type="ColorRect" parent="catatan"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313478, 0.579757, 0.47172, 1)
+
+[node name="catbutton" type="Button" parent="catatan"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -186.0
+offset_right = 175.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "TUTUP"
+
+[node name="TextEdit" type="TextEdit" parent="catatan"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -605.0
+offset_right = 336.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_mxmia")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "TULIS CATATAN DISINI...."
+wrap_mode = 1
 
 [node name="ktrangan" type="Control" parent="."]
 visible = false
@@ -343,9 +692,22 @@ autostart = true
 [node name="savenloader" type="Node" parent="utilitas"]
 script = ExtResource("2_w6yn3")
 
+[node name="option" type="Node" parent="utilitas"]
+script = ExtResource("4_fnqx4")
+
 [connection signal="pressed" from="ui2/Button" to="." method="_on_button_pressed"]
 [connection signal="item_clicked" from="ui2/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="ui3/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="ui3/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="optButton" to="utilitas/option" method="_on_opt_button_pressed"]
+[connection signal="pressed" from="option/Button" to="utilitas/option" method="_on_button_pressed"]
+[connection signal="pressed" from="option/Button2" to="utilitas/option" method="_on_button_2_pressed"]
+[connection signal="pressed" from="option/Button3" to="utilitas/option" method="_on_button_3_pressed"]
+[connection signal="pressed" from="option/Button4" to="utilitas/option" method="_on_button_4_pressed"]
+[connection signal="pressed" from="riwayatfull/riwbutton" to="utilitas/option" method="_on_riwbutton_pressed"]
+[connection signal="pressed" from="setting/settbutton" to="utilitas/option" method="_on_settbutton_pressed"]
+[connection signal="pressed" from="setting/savesetting" to="utilitas/option" method="_on_savesetting_pressed"]
+[connection signal="pressed" from="setting/hapusdata" to="utilitas/savenloader" method="_on_hapusdata_pressed"]
+[connection signal="pressed" from="catatan/catbutton" to="utilitas/option" method="_on_catbutton_pressed"]
 [connection signal="pressed" from="ktrangan/closebut" to="." method="_on_closebut_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,33 +2,47 @@ extends Node2D
 
 
 
-@onready var total_uang: Label = $"ui/total uang"
-@onready var inputUang := 0
 
+
+# akses node
+@onready var inputfield = $ui3/LineEdit #input untuk memasukkan jumlah uang
+@onready var item_list: ItemList = %ItemList
+
+@onready var total_uang : Label = $"ui/total uang"
+
+
+
+@onready var inputUang := 0
 @onready var date = ""
 @onready var time = ""
 @onready var kategori = ""
 @onready var combine = ""
-@onready var gacukup = false
-
-@onready var keterangan = []
-
-@onready var inputfield = $ui3/LineEdit
-@onready var isnumber = false
-
-@onready var item_list: ItemList = %ItemList
-@onready var item_array = []
 
 
 
-# Called when the node enters the scene tree for the first time.
+
+
+#status
+@onready var gacukup = false # status mengenai apakah total uang cukup untuk transaksi
+@onready var isnumber = false # status mengenai apakah bentuk input pada inputfield bentuknya angka atau bukan
+
+
+
+#array
+@onready var item_array = [] #menyimpan setiap data pada item list
+@onready var keterangan = [] #menyimpan setiap keterangan pada setiap input
+
+
+
 func _ready() -> void:
+	$setting/OptionButton.setstyles(Color.WHEAT,Color.CADET_BLUE,Color.WHITE_SMOKE,Color.BLACK,Color.FIREBRICK,Color.WHITE_SMOKE)
 	
-	$utilitas/savenloader.checksavedata()
-	pass # Replace with function body
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	$ui/version.text = Global.appVersion
+	
+	$utilitas/savenloader.checksavedata() #mengecek dan meload data json
+	total_uang.text = add_comma_to_int(inputUang)
+
 func _process(_delta) -> void:
-	
 	date = Time.get_date_string_from_system()
 	time = Time.get_time_string_from_system()
 	
@@ -54,13 +68,9 @@ func _process(_delta) -> void:
 	kategori = kategoricek()
 	isnumber = cekinput()
 	
-	
-	# print(inputUang)
-	
-	# buka chrome
-	
 
 
+# menambahkan koma untuk number
 func add_comma_to_int(value: int) -> String:
 	# Convert value to string.
 	var str_value: String = str(value)
@@ -78,7 +88,8 @@ func add_comma_to_int(value: int) -> String:
 	# Return the formatted string.
 	return str_value
 
-
+# mengecek apakah uang cukup untuk diambil dari total uang yang ada, jika tidak cukup maka -
+# - transaksi tidak bisa dilanjutkan
 func budgetcek():
 	var value = inputUang - int(inputfield.text)
 	var uangkosong = false
@@ -89,7 +100,7 @@ func budgetcek():
 	return uangkosong
 
 
-
+# memastikan user untuk mengisi kategori untuk bisa melanjutkan
 func kategoricek():
 	var kat = ""
 	if $ui3/OptionButton.selected == 0:
@@ -99,7 +110,7 @@ func kategoricek():
 	return kat
 	
 	
-	
+# mengecek input untuk memaskitan inpunya dalam bentuk number bukan string
 func cekinput():
 	var input = inputfield.text
 	var cek = int(input)
@@ -111,7 +122,7 @@ func cekinput():
 	return status
 
 
-
+# memasukkan data dari array ke item list
 func checkitemlist():
 	
 	item_array.clear()
@@ -125,11 +136,12 @@ func checkitemlist():
 
 
 
-
+# tombol plus
 func _on_button_pressed() -> void:
 	print("di tekan")
-	#$ui3.show()
 	$AnimationPlayer.play("open")
+	$ktrangan.hide()
+	
 	
 
 
@@ -138,13 +150,10 @@ func _on_cancel_pressed() -> void:
 	
 	inputfield.text = ""
 	$ui3/OptionButton.selected = -1
-	
-	
 	$AnimationPlayer.play("close")
-	#$ui3.hide()
-	pass # Replace with function body.
+	
 
-
+#ketika save button di tekan
 func _on_save_pressed() -> void:
 	
 	
@@ -156,47 +165,42 @@ func _on_save_pressed() -> void:
 	
 	total_uang.text = add_comma_to_int(inputUang)
 	
-	
-
+	#mengkombinasikan keterangan transaksi dalam satu string
 	combine = "tgl "+date+", jam "+time+" "+kategori+" "+"Rp. "+add_comma_to_int(int(inputfield.text))
 	
+	#memasukkan value combine yang barusan kita buat ke dalam item list
 	$ui2/ItemList.add_item(combine,null,true)
 	
+	#memasukkan keterangan ke dalam array
 	keterangan.append($ui3/TextEdit.text)
 	
-	
+	#menyimpan itemlist ke dalam array
 	checkitemlist()
 	
-	#menyimpan data
+	#menyimpan data ke file eksteranal json
 	$utilitas/savenloader.save()
 	
 	
-	
+	# membersihkan value input an terakhir
 	$ui3/TextEdit.text = ""
 	inputfield.text = ""
 	$ui3/OptionButton.selected = -1
 	
-	#play the animation
+	
 	$AnimationPlayer.play("close")
-	#$ui3.hide()
-	pass # Replace with function body.
 
-
+# mengakses array keterangan setiap transaksi pada item list
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	print($ui2/ItemList.get_item_text(index))
+	#print($ui2/ItemList.get_item_text(index))
 	$ktrangan/TextEdit.text = keterangan[index]
 	$ktrangan.show()
 	$ui2/ItemList.deselect(index)
-	pass # Replace with function body.
 
 
 func _on_closebut_pressed() -> void:
 	$ktrangan.hide()
-	pass # Replace with function body.
 
 
 func _on_timer_timeout() -> void:
 	if isnumber == false:
 		inputfield.clear()
-
-	pass # Replace with function body.
