@@ -1,9 +1,9 @@
 extends Node
 
 
-var appVersion = "v0.2.1"
-var saveDataAvailable = true
-var styleSelected = "classic"
+@onready var appVersion = "v0.1.2 stable"
+@onready var saveDataAvailable = true
+@onready var styleSelected = "classic"
 
 
 

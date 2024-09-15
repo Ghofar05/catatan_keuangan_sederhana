@@ -43,11 +43,7 @@ func _ready() -> void:
 	total_uang.text = add_comma_to_int(inputUang)
 	
 	
-	if Global.styleSelected == "classic":
-		$utilitas/savenloader.loadstyle()
-	else:
-		$utilitas/savenloader.savestyle()
-	
+	$utilitas/savenloader.checkdatastyle()
 	$setting/OptionButton.usestyle()
 	
 
@@ -62,18 +58,23 @@ func _process(_delta) -> void:
 		$ui3/save.disabled = true
 	elif int(inputfield.text) <= 0:
 		$ui3/save.disabled = true
-	elif gacukup == true and kategori == "keluar":
-		$ui3/save.disabled = true
 	elif isnumber == false:
 		$ui3/save.disabled = true
 	else:
 		$ui3/info.hide()
 		$ui3/save.disabled = false
-		
-	if isnumber == true:
-		$ui3/info2.hide()
+	
+	if gacukup == true and kategori == "keluar":
+		$ui3/info2.text = "*uang ga cukup"
+		$ui3/save.disabled = true
 	else:
-		$ui3/info2.show()
+		pass
+		
+		
+	#if isnumber == true:
+		#$ui3/info2.text = "*masukkan angka"
+	#else:
+		#$ui3/info2.text = "*masukkan angka"
 	
 	gacukup = budgetcek()
 	kategori = kategoricek()

@@ -98,6 +98,8 @@ func savestyle():
 	file.close()
 
 
+
+
 func loadstyle():
 	var file = FileAccess.open("user://datastyle.json",FileAccess.READ)
 	var json = file.get_as_text()
@@ -108,6 +110,16 @@ func loadstyle():
 	
 	
 	file.close()
+	
+	
+	
+func checkdatastyle():
+	var data = FileAccess.file_exists("user://datastyle.json")
+	if data:
+		loadstyle()
+	else:
+		savestyle()
+		pass
 
 
 
