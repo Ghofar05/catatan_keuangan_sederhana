@@ -43,9 +43,11 @@ func _ready() -> void:
 	total_uang.text = add_comma_to_int(inputUang)
 	
 	
+	if Global.styleSelected == "classic":
+		$utilitas/savenloader.loadstyle()
+	else:
+		$utilitas/savenloader.savestyle()
 	
-	$utilitas/savenloader.savestyle()
-	$utilitas/savenloader.loadstyle()
 	$setting/OptionButton.usestyle()
 	
 
@@ -148,6 +150,7 @@ func checkitemlist():
 # tombol plus
 func _on_button_pressed() -> void:
 	print("di tekan")
+	$ui3.show()
 	$AnimationPlayer.play("open")
 	$ktrangan.hide()
 	
@@ -160,6 +163,8 @@ func _on_cancel_pressed() -> void:
 	inputfield.text = ""
 	$ui3/OptionButton.selected = -1
 	$AnimationPlayer.play("close")
+	await get_tree().create_timer(0.5).timeout
+	$ui3.hide()
 	
 
 #ketika save button di tekan
@@ -203,6 +208,7 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 	#print($ui2/ItemList.get_item_text(index))
 	$ktrangan/TextEdit.text = keterangan[index]
 	$ktrangan.show()
+	$AnimationPlayer.play("keterangan pop up")
 	$ui2/ItemList.deselect(index)
 
 

@@ -17,7 +17,7 @@ func usestyle():
 	if Global.styleSelected == "classic":
 		setstyles(Color.WHEAT,Color.CADET_BLUE,Color.WHITE_SMOKE,Color.BLACK,Color.FIREBRICK,Color.WHITE_SMOKE)
 	elif Global.styleSelected == "light":
-		setstyles(Color.FLORAL_WHITE,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE,Color.DARK_SALMON,Color.PALE_VIOLET_RED,Color.FLORAL_WHITE)
+		setstyles(Color.WHITE_SMOKE,"c9c9c9",Color.WHITE_SMOKE,Color.WEB_GRAY,Color.FIREBRICK,Color.WHITE_SMOKE)
 	elif Global.styleSelected == "dark":
 		setstyles(Color.BLACK,Color.BLACK,Color.TEAL,Color.TEAL,Color.DARK_RED,Color.TEAL)
 		
@@ -81,7 +81,7 @@ func setstyles(colorbgmain,colorbgmainsec,buttoncolortext,labelcolortext,labelwa
 	$"../../catatan/TextEdit".add_theme_color_override("font_color",buttoncolortext)
 	
 	
-	$"../../ktrangan/ColorRect".color = colorbgmain
+	$"../../ktrangan/ColorRect".color = colorbgmainsec
 	$"../../ktrangan/Label".add_theme_color_override("font_color",labelcolortext)
 	$"../../ktrangan/TextEdit".add_theme_color_override("font_color",buttoncolortext)
 	$"../../ktrangan/closebut".add_theme_color_override("font_color",buttoncolortext)
