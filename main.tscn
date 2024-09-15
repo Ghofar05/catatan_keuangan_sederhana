@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://1u3b0m4u7ejh"]
+[gd_scene load_steps=14 format=3 uid="uid://1u3b0m4u7ejh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_uhpib"]
 [ext_resource type="FontFile" uid="uid://c0hmphsp2eiw8" path="res://Roboto-Medium.ttf" id="2_mxmia"]
 [ext_resource type="Script" path="res://saveloader.gd" id="2_w6yn3"]
 [ext_resource type="Script" path="res://style.gd" id="3_0ts0n"]
 [ext_resource type="Script" path="res://option.gd" id="4_fnqx4"]
+
+[sub_resource type="Theme" id="Theme_yrxh6"]
+default_font_size = 30
 
 [sub_resource type="Animation" id="Animation_3nje4"]
 length = 0.001
@@ -85,6 +88,12 @@ _data = {
 "keterangan pop up": SubResource("Animation_natwq"),
 "open": SubResource("Animation_alkr6")
 }
+
+[sub_resource type="Theme" id="Theme_4ewyh"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_eww7t"]
+default_font_size = 30
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uhpib")
@@ -219,6 +228,7 @@ theme_override_colors/guide_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="ui3" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 1280.0
@@ -292,7 +302,7 @@ offset_left = 46.0
 offset_top = 405.0
 offset_right = 224.0
 offset_bottom = 448.0
-theme_override_font_sizes/font_size = 30
+theme = SubResource("Theme_yrxh6")
 item_count = 2
 popup/item_0/text = "masuk"
 popup/item_1/text = "keluar"
@@ -548,10 +558,11 @@ text = "TUTUP"
 
 [node name="OptionButton" type="OptionButton" parent="setting"]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 214.0
-offset_right = 524.0
-offset_bottom = 260.0
+offset_left = 272.0
+offset_top = 208.0
+offset_right = 533.0
+offset_bottom = 254.0
+theme = SubResource("Theme_4ewyh")
 alignment = 1
 item_count = 3
 popup/item_0/text = "CLASSIC"
@@ -563,10 +574,11 @@ script = ExtResource("3_0ts0n")
 
 [node name="OptionButton2" type="OptionButton" parent="setting"]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 575.0
-offset_right = 580.0
-offset_bottom = 618.0
+offset_left = 416.0
+offset_top = 792.0
+offset_right = 564.0
+offset_bottom = 836.0
+theme = SubResource("Theme_eww7t")
 alignment = 1
 item_count = 3
 popup/item_0/text = "1"
@@ -586,45 +598,45 @@ text = "STYLE :"
 
 [node name="Label2" type="Label" parent="setting"]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 660.0
-offset_right = 382.0
-offset_bottom = 729.0
+offset_left = 61.0
+offset_top = 656.0
+offset_right = 386.0
+offset_bottom = 725.0
 theme_override_font_sizes/font_size = 50
 text = "HAPUS DATA :"
 
 [node name="Label3" type="Label" parent="setting"]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 571.0
-offset_right = 406.0
-offset_bottom = 613.0
+offset_left = 64.0
+offset_top = 800.0
+offset_right = 395.0
+offset_bottom = 842.0
 theme_override_font_sizes/font_size = 30
 text = "BERAPA JUMLAH 1+1 = "
 
 [node name="Label4" type="Label" parent="setting"]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 733.0
-offset_right = 428.0
-offset_bottom = 792.0
+offset_left = 64.0
+offset_top = 912.0
+offset_right = 414.0
+offset_bottom = 971.0
 theme_override_colors/font_color = Color(1, 0.0909423, 0.0594644, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="savesetting" type="Button" parent="setting"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 321.0
-offset_right = 200.0
-offset_bottom = 360.0
+offset_left = 72.0
+offset_top = 320.0
+offset_right = 216.0
+offset_bottom = 384.0
 text = "SAVE STYLE"
 
 [node name="hapusdata" type="Button" parent="setting"]
 layout_mode = 0
-offset_left = 433.0
-offset_top = 679.0
-offset_right = 654.0
-offset_bottom = 723.0
+offset_left = 64.0
+offset_top = 720.0
+offset_right = 285.0
+offset_bottom = 764.0
 disabled = true
 text = "HAPUS SEMUA DATA"
 
@@ -669,7 +681,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -336.0
-offset_top = -605.0
+offset_top = -552.0
 offset_right = 336.0
 offset_bottom = 399.0
 grow_horizontal = 2
