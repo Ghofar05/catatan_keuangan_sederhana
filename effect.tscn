@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsmok1bxf0v3y"]
+
+[ext_resource type="Script" path="res://effect.gd" id="1_vwbki"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_icbbf"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.54
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 552.5
+radial_velocity_min = 619.34
+radial_velocity_max = 1000.0
+gravity = Vector3(0, 50, 0)
+scale_min = 10.0
+scale_max = 10.0
+hue_variation_min = -0.97
+hue_variation_max = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vwbki")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_icbbf")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0

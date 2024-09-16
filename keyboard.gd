@@ -72,7 +72,6 @@ func allbutoncheck():
 	tujuh.disabled = istextMax
 	delapan.disabled = istextMax
 	sembilan.disabled = istextMax
-	ok.disabled = istextMax
 	nol.disabled = istextMax
 
 

@@ -68,6 +68,7 @@ func _process(_delta) -> void:
 		$ui3/info2.text = "*uang ga cukup"
 		$ui3/save.disabled = true
 	else:
+		$ui3/info2.text = ""
 		pass
 		
 	if Input.is_action_just_pressed("back"):
