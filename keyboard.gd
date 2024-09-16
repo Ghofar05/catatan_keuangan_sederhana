@@ -162,5 +162,6 @@ func _on_del_pressed() -> void:
 
 
 func _on_close_pressed() -> void:
+	wadah.clear()
 	$".".hide()
 	pass # Replace with function body.

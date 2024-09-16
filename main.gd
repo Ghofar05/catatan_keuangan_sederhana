@@ -158,6 +158,7 @@ func checkitemlist():
 # tombol plus
 func _on_button_pressed() -> void:
 	print("di tekan")
+
 	$ui3.show()
 	$AnimationPlayer.play("open")
 	$ktrangan.hide()

@@ -91,6 +91,7 @@ func _on_catbutton_pressed() -> void:
 
 func _on_riwbutton_pressed() -> void:
 	$"../../option".show()
+	$"../../riwayatfull/ItemList".clear()
 	$"../../riwayatfull".hide()
 	pass # Replace with function body.
 

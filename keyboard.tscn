@@ -116,14 +116,14 @@ text = "c"
 [node name="close" type="Button" parent="BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "tutup"
+text = "batal"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 948.0
+offset_top = 1104.0
 offset_right = 341.0
-offset_bottom = 1066.0
+offset_bottom = 1222.0
 theme_override_colors/font_color = Color(1, 0.151344, 0.108333, 1)
 theme_override_font_sizes/font_size = 50
 
