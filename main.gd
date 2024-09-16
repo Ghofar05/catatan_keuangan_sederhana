@@ -12,7 +12,7 @@ extends Node2D
 
 
 
-@onready var inputUang := 0
+@onready var dompet := 0
 @onready var date = ""
 @onready var time = ""
 @onready var kategori = ""
@@ -40,7 +40,7 @@ func _ready() -> void:
 	
 	
 	$utilitas/savenloader.checksavedata() #mengecek dan meload data json
-	total_uang.text = add_comma_to_int(inputUang)
+	total_uang.text = add_comma_to_int(dompet)
 	
 	
 	$utilitas/savenloader.checkdatastyle()
@@ -70,7 +70,13 @@ func _process(_delta) -> void:
 	else:
 		pass
 		
-		
+	if Input.is_action_just_pressed("back"):
+		$ui3.hide()
+		$riwayatfull.hide()
+		$setting.hide()
+		$catatan.hide()
+		$ktrangan.hide()
+		$option.hide()
 	#if isnumber == true:
 		#$ui3/info2.text = "*masukkan angka"
 	#else:
@@ -103,7 +109,7 @@ func add_comma_to_int(value: int) -> String:
 # mengecek apakah uang cukup untuk diambil dari total uang yang ada, jika tidak cukup maka -
 # - transaksi tidak bisa dilanjutkan
 func budgetcek():
-	var value = inputUang - int(inputfield.text)
+	var value = dompet - Global.virtualkeyboardvalue
 	var uangkosong = false
 	if value <= 0:
 		uangkosong = true
@@ -124,7 +130,7 @@ func kategoricek():
 	
 # mengecek input untuk memaskitan inpunya dalam bentuk number bukan string
 func cekinput():
-	var input = inputfield.text
+	var input = Global.virtualkeyboardvalue
 	var cek = int(input)
 	var status = false
 	if cek == 0 :
@@ -165,6 +171,7 @@ func _on_cancel_pressed() -> void:
 	$ui3/OptionButton.selected = -1
 	$AnimationPlayer.play("close")
 	await get_tree().create_timer(0.5).timeout
+	$Control.wadah.clear()
 	$ui3.hide()
 	
 
@@ -173,15 +180,15 @@ func _on_save_pressed() -> void:
 	
 	
 	if kategori == "masuk":
-		inputUang += int(inputfield.text)
+		dompet += Global.virtualkeyboardvalue
 	else:
-		inputUang -= int(inputfield.text)
+		dompet -= Global.virtualkeyboardvalue
 	
 	
-	total_uang.text = add_comma_to_int(inputUang)
+	total_uang.text = add_comma_to_int(dompet)
 	
 	#mengkombinasikan keterangan transaksi dalam satu string
-	combine = "tgl "+date+", jam "+time+" "+kategori+" "+"Rp. "+add_comma_to_int(int(inputfield.text))
+	combine = "tgl "+date+", jam "+time+" "+kategori+" "+"Rp. "+add_comma_to_int(int(Global.virtualkeyboardvalue))
 	
 	#memasukkan value combine yang barusan kita buat ke dalam item list
 	$ui2/ItemList.add_item(combine,null,true)
@@ -198,7 +205,7 @@ func _on_save_pressed() -> void:
 	
 	# membersihkan value input an terakhir
 	$ui3/TextEdit.text = ""
-	inputfield.text = ""
+	$Control.wadah.clear()
 	$ui3/OptionButton.selected = -1
 	
 	
@@ -217,6 +224,7 @@ func _on_closebut_pressed() -> void:
 	$ktrangan.hide()
 
 
-func _on_timer_timeout() -> void:
-	if isnumber == false:
-		inputfield.clear()
+
+func _on_ovk_pressed() -> void:
+	$Control.show()
+	pass # Replace with function body.

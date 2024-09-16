@@ -10,7 +10,7 @@ func save():
 	var file = FileAccess.open("user://savedata.json",FileAccess.WRITE)
 	var saved_data = {}
 	
-	saved_data["totaluang"] = mains.inputUang
+	saved_data["totaluang"] = mains.dompet
 	saved_data["keteranganItems"] = mains.keterangan
 	saved_data["daftarItems"] = mains.item_array
 	
@@ -24,7 +24,7 @@ func loads():
 	
 	var save_data = JSON.parse_string(json)
 	
-	mains.inputUang = save_data["totaluang"]
+	mains.dompet = save_data["totaluang"]
 	mains.keterangan = save_data["keteranganItems"]
 	mains.item_array = save_data["daftarItems"]
 	
@@ -130,7 +130,7 @@ func _on_hapusdata_pressed() -> void:
 	if Global.saveDataAvailable:
 		mains.item_array.clear()
 		mains.keterangan.clear()
-		mains.inputUang = 0
+		mains.dompet = 0
 		mains.total_uang.text = "0"
 		$"../../catatan/TextEdit".text = ""
 		$"../../riwayatfull/ItemList".clear()

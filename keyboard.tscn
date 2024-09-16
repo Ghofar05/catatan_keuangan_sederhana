@@ -1,0 +1,142 @@
+[gd_scene load_steps=3 format=3 uid="uid://cylj7pksqlmk4"]
+
+[ext_resource type="Script" path="res://keyboard.gd" id="1_ned6c"]
+
+[sub_resource type="Theme" id="Theme_p5jqt"]
+default_font_size = 100
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p5jqt")
+script = ExtResource("1_ned6c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 250.0
+offset_right = 720.0
+offset_bottom = 1968.0
+color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 345.0
+offset_bottom = -419.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="1" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="2" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2
+"
+
+[node name="3" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="4" type="Button" parent="BoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+
+[node name="5" type="Button" parent="BoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5
+"
+
+[node name="6" type="Button" parent="BoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="7" type="Button" parent="BoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+
+[node name="8" type="Button" parent="BoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+
+[node name="9" type="Button" parent="BoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="0" type="Button" parent="BoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "0"
+
+[node name="ok" type="Button" parent="BoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ok"
+
+[node name="del" type="Button" parent="BoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "c"
+
+[node name="close" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "tutup"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 948.0
+offset_right = 341.0
+offset_bottom = 1066.0
+theme_override_colors/font_color = Color(1, 0.151344, 0.108333, 1)
+theme_override_font_sizes/font_size = 50
+
+[connection signal="pressed" from="BoxContainer/HBoxContainer/1" to="." method="_on_first_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/2" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/3" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/4" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/5" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/6" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer3/7" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer3/8" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer3/9" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer4/0" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer4/ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer4/del" to="." method="_on_del_pressed"]
+[connection signal="pressed" from="BoxContainer/close" to="." method="_on_close_pressed"]

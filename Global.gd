@@ -1,15 +1,7 @@
 extends Node
 
 
-@onready var appVersion = "v0.1.4 -beta"
+@onready var appVersion = "v0.2.0 -alpha"
 @onready var saveDataAvailable = true
 @onready var styleSelected = "classic"
-
-
-
-
-
-
-
-
-#style
+@onready var virtualkeyboardvalue = 0
